@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard } from 'src/app/auth/auth.gaurd';
 import { AddUserComponent } from './add-user.component';
 
 
