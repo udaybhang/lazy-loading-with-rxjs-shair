@@ -18,17 +18,18 @@ import {
       route: ActivatedRouteSnapshot,
       state: RouterStateSnapshot
     ): boolean | Observable<boolean> | Promise<boolean> {
-      const isAuth = this.authService.getIsAuth();
+    const isAuth = localStorage.getItem("token");
       debugger
       if (!isAuth) {
         this.router.navigate(['/login']);
       }
-      return isAuth;
+      return true;
     }
     canActivateChild(
         next: ActivatedRouteSnapshot,
         state: RouterStateSnapshot): boolean {
-        if(this.authService.getIsAuth()){
+            const auth = localStorage.getItem('token')
+        if(auth){
           return true;
         }
         this.router.navigate(['/login']);

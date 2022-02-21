@@ -5,10 +5,9 @@ import { Subject } from "rxjs";
 
 @Injectable({ providedIn: "root" })
 export class AuthService {
-  private isAuthenticated = false;
+  private isAuthenticated:any;
   private token: any;
-  private tokenTimer: any;
-  private authStatusListener = new Subject<boolean>();
+  private authStatusListener = new Subject<any>();
 
   constructor(private router: Router) {}
 
@@ -17,7 +16,7 @@ export class AuthService {
   }
 
   getIsAuth() {
-    return this.isAuthenticated;
+    return this.token
   }
 
 
@@ -25,21 +24,10 @@ export class AuthService {
     return this.authStatusListener.asObservable();
   }
 
-//   createUser(email: string, password: string) {
-//     const authData: AuthData = { email: email, password: password };
-//     this.http
-//       .post("http://localhost:3000/api/user/signup", authData)
-//       .subscribe(() => {
-//         this.router.navigate(["/"]);
-//       }, error => {
-//         this.authStatusListener.next(false);
-//       });
-//   }
-
   login() {
         this.token = 'udaybhan123';
-        this.isAuthenticated = true;
-          this.authStatusListener.next(true);
+        this.isAuthenticated = this.token;
+          this.authStatusListener.next(this.token);
           this.saveAuthData(this.token);
           this.router.navigate(["/add-user"]);
   }
@@ -47,8 +35,8 @@ export class AuthService {
 
   logout() {
     this.token = null;
-    this.isAuthenticated = false;
-    this.authStatusListener.next(false);
+    this.isAuthenticated = null;
+    this.authStatusListener.next(null);
     this.clearAuthData();
     this.router.navigate(["/login"]);
   }
@@ -60,17 +48,5 @@ export class AuthService {
 
   private clearAuthData() {
     localStorage.removeItem("token");
-  }
-
-  private getAuthData() {
-    const token = localStorage.getItem("token");
-    const expirationDate = localStorage.getItem("expiration");
-    const userId = localStorage.getItem("userId");
-    if (!token || !expirationDate) {
-      return;
-    }
-    return {
-      token: token
-    };
   }
 }

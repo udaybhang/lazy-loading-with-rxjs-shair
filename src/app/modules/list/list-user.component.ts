@@ -13,7 +13,10 @@ export class ListUserComponent implements OnInit {
    
    }
   changeName(uName:any){ 
-    this.servUti.userName.next(uName.value)
+    this.servUti.userName.next(uName.value);
+    this.servUti.checkHttp().subscribe(res=>{
+      console.log('http res========>', res)
+    })
   }
   ngOnInit(): void {
     this.servUti.userName.subscribe(res=>{
@@ -21,5 +24,7 @@ export class ListUserComponent implements OnInit {
       this.userName = res;
     })
   }
+
+
 
 }
