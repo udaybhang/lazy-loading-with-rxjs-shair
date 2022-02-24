@@ -11,14 +11,6 @@ export class AuthService {
 
   constructor(private router: Router) {}
 
-  getToken() {
-    return this.token;
-  }
-
-  getIsAuth() {
-    return this.token
-  }
-
 
   getAuthStatusListener() {
     return this.authStatusListener.asObservable();

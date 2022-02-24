@@ -6,7 +6,8 @@ const routes: Routes = [
   { path: "add-user", canActivate: [AuthGuard], loadChildren: () => import('./modules/user/user.module').then(result => result.UserModule) },
   { path: "list-user", canActivate: [AuthGuard], loadChildren: () => import('./modules/list/list-user.module').then(result => result.ListUserModule) },
   { path: "login",  loadChildren: () => import('./auth/login.module').then(result => result.LoginModule) },
-  { path: 'logout', loadChildren: () => import('./auth/logout/logout.module').then(m => m.LogoutModule) }
+  { path: 'logout', loadChildren: () => import('./auth/logout/logout.module').then(m => m.LogoutModule) },
+  { path: 'v1', loadChildren: () => import('./modules/v1/class-active.module').then(m => m.ClassActiveModule) }
 ];
 
 @NgModule({
