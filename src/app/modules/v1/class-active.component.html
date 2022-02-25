@@ -6,4 +6,11 @@
       <a class="nav-item nav-link" [class.selected]="activeIndex === 2" (click)="activeIndex2(2)">Commission</a>
     </nav>
    
+
+    <nav class="nav nav-pills nav-justified" style="border: 1px solid black; margin-bottom: 30px;">
+      <a class="nav-item nav-link"  [ngClass]="{selected: activeIndex === 0}" (click)="activeIndex0(0)" style="border-right: 1px solid black;">User Transaction</a>
+      <a class="nav-item nav-link" [ngClass]="{selected: activeIndex === 1}" (click)="activeIndex1(1)"  style="border-right: 1px solid black;">Seller Transaction</a>
+      <a class="nav-item nav-link" [ngClass]="{selected: activeIndex === 2}" (click)="activeIndex2(2)">Commission</a>
+    </nav>
   </div>
+  
